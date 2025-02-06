@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Головна - LogikaBlog</title>
+  
+{% endblock title %}
+
+{% block content %}
+  
+
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{url_for('static', filename='Photos/ai-generated-8649646_1920.jpg')}}" class="d-block w-100" alt="Bootstrap" width="200" height="600">
+          </div>
+          <div class="carousel-item">
+            <img src="{{url_for('static', filename='Photos/binary-2904980_1920.jpg')}}" class="d-block w-100" alt="Bootstrap" width="200" height="600">
+          </div>
+          <div class="carousel-item">
+            <img src="{{url_for('static', filename='Photos/coding-924920_1920.jpg')}}" class="d-block w-100" alt="Bootstrap" width="200" height="600">
+          </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <main class="container mt-5">
+          <h1 class="mt-5">Information</h1>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+          {% for article in articles %}
+
+          
+            <div class="card" style="width: 18rem;">
+
+              {% if article[4] %}
+              <img src="{{ url_for('static', filename='Photos/' + article[4]) }}" alt="...">
+              {% endif %}
+              
+              <div class="card-body">
+                <h5 class="card-title">{{article[1]}}</h5>
+                <p class="card-text">{{article[2]}}</p>
+                <a href="{{url_for('article_page', article_id=article[0])}}" class="btn btn-primary stretched-link">more about...</a>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+      </main>
+ 
+</html>
+
+{% endblock  %}
