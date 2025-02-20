@@ -26,7 +26,7 @@ class DBManager():
 
     def get_articles_by_category(self, category_id):
         self.open_db()
-        self.cursor.execute('''SELECT * FROM articles WHERE category_id=?''', [category_id])
+        self.cursor.execute('''SELECT * FROM articles WHERE category_id = ?''', [category_id])
         data = self.cursor.fetchall()
         self.conn.close()
         return data
