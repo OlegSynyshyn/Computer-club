@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Нова стаття - CompClub</title>
+{% endblock title %}
+
+{% block content %}
+<main class="container my-5">
+  <h1 class="mt-5">Додавання нової статті</h1>
+  <form action="" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="title" class="form-label">Назва статті</label>
+        <input required name="title" type="text" class="form-control" id="title" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Короткий опис</label>
+        <textarea name="description" class="form-control" id="description" rows="2" placeholder=""></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Опис</label>
+        <textarea required name="text" class="form-control" id="content" rows="7" placeholder=""></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Виберіть зображення</label>
+        <input required name="image" class="form-control" type="file" id="image">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Категорія</label>
+        <select required name="category" class="form-select" id="category">
+            <option selected>Виберіть категорію</option>
+            {% for id, name in categories %}
+                <option value="{{id}}">{{name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary my-4">Зберегти</button>
+  </form>
+</main>
+{% endblock content%}

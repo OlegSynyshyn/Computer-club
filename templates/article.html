@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{article[1]}} - {{category_name}}</title>
+{% endblock title %}
+
+{% block content %}
+<main class="container my-5">
+  <h1 class="mt-5">{{article[1]}}</h1>
+  <div class="row">
+    <div class="col-12 col-md-8 col-xl-9">
+      {% if article[4] %}
+      <img src="{{ url_for('static', filename='Photos/' + article[4]) }}" class="img-fluid shadow" alt="...">
+      {% endif %}
+      <p class="mt-3">{{article[2]}}</p>
+      <p class="">{{article[3]}}</p>
+      <small>Опубліковано: {{article[7]}}</small>
+    </div>
+    <div class="col-12 col-md-4 col-xl-3">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, earum doloribus impedit vitae dolor molestias neque perspiciatis provident delectus numquam, voluptas nihil rerum laboriosam repellendus repudiandae beatae deserunt voluptates cumque!</p>
+    </div>
+  </div>
+</main>
+{% endblock content%}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Новий запис - CompClub</title>
+{% endblock title %}
+
+{% block content %}
+<main class="container my-5">
+  <h1 class="mt-5">Запис у клуб</h1>
+  <form action="" method="post">
+    <div class="mb-3">
+        <label for="start_time" class="form-label">Час початку</label>
+        <input required name="start_time" type="datetime-local" class="form-control" id="start_time">
+    </div>
+    <button type="submit" class="btn btn-primary my-4">Забронювати</button>
+  </form>
+</main>
+{% endblock content%}
