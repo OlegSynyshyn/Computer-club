@@ -29,6 +29,8 @@ def article_page(article_id):
     article = db.get_article_by_id(article_id)
     return render_template("article.html", categories=categories, article=article)
 
+
+
 @app.route("/articles/new", methods=["GET", "POST"])
 def new_article():
     categories = db.get_categories()
@@ -39,20 +41,22 @@ def new_article():
         image = request.files['image']
         image.save(IMG_PATH + os.sep + image.filename)
         category_id = request.form['category']
-        user_id = 1  # Припустимо, що користувач з ID 1 додає статтю
+        user_id = 1  
         db.create_article(user_id, category_id, title, content, image.filename)
         return redirect(url_for('index'))
     return render_template("new_article.html", categories=categories)
 
+
 @app.route("/bookings/new", methods=["GET", "POST"])
 def new_booking():
     if request.method == 'POST':
-        user_id = 1  # Припустимо, що користувач з ID 1 робить запис
+        user_id = request.form['user_id']  
         start_time = request.form['start_time']
-        db.create_booking(user_id, start_time)
+        end_time = request.form['end_time']
+        db.create_booking(user_id, start_time, end_time)
         return redirect(url_for('index'))
     return render_template("new_booking.html")
-
+    
 @app.route("/search")
 def search_page():
     categories = db.get_categories()

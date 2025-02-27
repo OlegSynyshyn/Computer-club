@@ -1,17 +1,26 @@
+
 {% extends 'base.html' %}
 {% block title %}
-<title>Новий запис - CompClub</title>
+<title>Запис у клуб - CompClub</title>
 {% endblock title %}
 
 {% block content %}
 <main class="container my-5">
-  <h1 class="mt-5">Запис у клуб</h1>
-  <form action="" method="post">
-    <div class="mb-3">
-        <label for="start_time" class="form-label">Час початку</label>
-        <input required name="start_time" type="datetime-local" class="form-control" id="start_time">
-    </div>
-    <button type="submit" class="btn btn-primary my-4">Забронювати</button>
-  </form>
+    <h1 class="mt-5">Запис у комп'ютерний клуб</h1>
+    <form action="{{ url_for('new_booking') }}" method="post">
+        <div class="mb-3">
+            <label for="user_id" class="form-label">Ім'я Прізвище</label>
+            <textarea name="user_id" class="form-control" id="user_id" rows="1" placeholder=""></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="start_time" class="form-label">Час початку</label>
+            <input required name="start_time" type="datetime-local" class="form-control" id="start_time">
+        </div>
+        <div class="mb-3">
+            <label for="end_time" class="form-label">Час завершення</label>
+            <input required name="end_time" type="datetime-local" class="form-control" id="end_time">
+        </div>
+        <button type="submit" class="btn btn-primary">Забронювати</button>
+    </form>
 </main>
-{% endblock content%}
+{% endblock content %}

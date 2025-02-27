@@ -33,11 +33,11 @@ class DBManager():
     
     def get_article_by_id(self, article_id):
         self.open_db()
-        self.cursor.execute('''SELECT * FROM articles WHERE id=?''', [article_id])
+        self.cursor.execute('''SELECT * FROM articles WHERE id = ?''', [article_id])
         data = self.cursor.fetchone()
         self.conn.close()
         return data
-    
+
     def create_article(self, user_id, category_id, title, content, image):
         self.open_db()
         self.cursor.execute('''INSERT INTO articles (user_id, category_id, title, content, created_at) VALUES (?, ?, ?, ?, ?)''', 
@@ -45,10 +45,11 @@ class DBManager():
         self.conn.commit()
         self.conn.close()
 
-    def create_booking(self, user_id, start_time):
+    def create_booking(self, user_id, start_time, end_time, seats):
         self.open_db()
-        self.cursor.execute('''INSERT INTO bookings (user_id, start_time, status, created_at) VALUES (?, ?, ?, ?)''', 
-                            [user_id, start_time, 'pending', datetime.now()])
+        self.cursor.execute('''INSERT INTO bookings (user_id, start_time, end_time, seats, status, created_at)
+                            VALUES (?, ?, ?, ?, ?, ?)''',
+                            [user_id, start_time, end_time, seats, 'pending', datetime.now()])
         self.conn.commit()
         self.conn.close()
 
@@ -59,3 +60,4 @@ class DBManager():
         data = self.cursor.fetchall()
         self.conn.close()
         return data
+    
