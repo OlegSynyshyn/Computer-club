@@ -10,7 +10,7 @@
     <form action="{{ url_for('new_booking') }}" method="post">
         <div class="mb-3">
             <label for="user_id" class="form-label">Ім'я Прізвище</label>
-            <textarea name="user_id" class="form-control" id="user_id" rows="1" placeholder=""></textarea>
+            <textarea name="user" class="form-control" id="user" rows="1" placeholder=""></textarea>
         </div>
         <div class="mb-3">
             <label for="start_time" class="form-label">Час початку</label>
@@ -20,6 +20,11 @@
             <label for="end_time" class="form-label">Час завершення</label>
             <input required name="end_time" type="datetime-local" class="form-control" id="end_time">
         </div>
+        <div class="mb-3">
+          <label for="end_time" class="form-label">Кількість місць</label>
+          <input required name="seats" type="number" class="form-control" id="seats" value = "1" min = "1" max = "6">
+          
+      </div>
         <button type="submit" class="btn btn-primary">Забронювати</button>
     </form>
 </main>

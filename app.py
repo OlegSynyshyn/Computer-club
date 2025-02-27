@@ -50,10 +50,11 @@ def new_article():
 @app.route("/bookings/new", methods=["GET", "POST"])
 def new_booking():
     if request.method == 'POST':
-        user_id = request.form['user_id']  
+        user = request.form['user']  
         start_time = request.form['start_time']
         end_time = request.form['end_time']
-        db.create_booking(user_id, start_time, end_time)
+        seats = request.form['seats']
+        db.create_booking(user, start_time, end_time, seats)
         return redirect(url_for('index'))
     return render_template("new_booking.html")
     

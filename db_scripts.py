@@ -40,16 +40,16 @@ class DBManager():
 
     def create_article(self, user_id, category_id, title, content, image):
         self.open_db()
-        self.cursor.execute('''INSERT INTO articles (user_id, category_id, title, content, created_at) VALUES (?, ?, ?, ?, ?)''', 
+        self.cursor.execute('''INSERT INTO articles (user, category_id, title, content, created_at) VALUES (?, ?, ?, ?, ?)''', 
                             [user_id, category_id, title, content, datetime.now()])
         self.conn.commit()
         self.conn.close()
 
-    def create_booking(self, user_id, start_time, end_time, seats):
+    def create_booking(self, user, start_time, end_time, seats):
         self.open_db()
-        self.cursor.execute('''INSERT INTO bookings (user_id, start_time, end_time, seats, status, created_at)
-                            VALUES (?, ?, ?, ?, ?, ?)''',
-                            [user_id, start_time, end_time, seats, 'pending', datetime.now()])
+        self.cursor.execute('''INSERT INTO bookings (user, start_time, end_time, status, seats)
+                            VALUES (?, ?, ?, ?, ?)''',
+                            [user, start_time, end_time,'pending', seats ])
         self.conn.commit()
         self.conn.close()
 
