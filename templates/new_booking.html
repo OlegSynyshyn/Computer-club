@@ -5,8 +5,13 @@
 {% endblock title %}
 
 {% block content %}
+<img src="{{url_for('static', filename='Photos/hyperpc-gaming-club-banner.jpg')}}" class="img-fluid" alt="...">
 <main class="container my-5">
+  
     <h1 class="mt-5">Запис у комп'ютерний клуб</h1>
+
+      
+
     <form action="{{ url_for('new_booking') }}" method="post">
         <div class="mb-3">
             <label for="user_id" class="form-label">Ім'я Прізвище</label>
